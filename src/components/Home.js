@@ -1,9 +1,8 @@
 import React from 'react'
-import { Container, Nav, NavItem, NavLink, TabContent, TabPane, Row, Col, Card, CardTitle, CardText, Button } from 'reactstrap'
+import { Container, Nav, NavItem, NavLink, TabContent, TabPane, Row, Col } from 'reactstrap'
 import classnames from 'classnames';
 import List from './List';
 import { connect } from 'react-redux';
-import QuestionDetail from './Question';
 import { Redirect } from 'react-router-dom';
 
 class Home extends React.Component {
@@ -18,11 +17,12 @@ class Home extends React.Component {
         })
     }
     render() {
-        const { questions, authedUser } = this.props
-        console.log(questions)
+        const { questions, authedUser, users } = this.props
         if(authedUser === null) {
             return <Redirect to='/Login' />
         }
+        const answered = Object.keys(users[authedUser].answers)
+        const unanswered = questions.filter(i=>!answered.includes(i))
         return(
             <div>
                 <Container>
@@ -48,13 +48,20 @@ class Home extends React.Component {
                         <TabPane tabId="1">
                         <Row>
                             <Col sm="12">
-                                {questions.map(i=>(
+                                {authedUser !== null && unanswered.map(i=>(
                                     <List key = {i} uid= {i} />
                                 ))}
                             </Col>
                         </Row>
                         </TabPane>
                         <TabPane tabId="2">
+                        <Row>
+                            <Col sm="12">
+                                {authedUser !== null && answered.map(i=>(
+                                    <List key = {i} uid= {i} />
+                                ))}
+                            </Col>
+                        </Row>
                         </TabPane>
                     </TabContent>
                 </Container>
@@ -63,9 +70,10 @@ class Home extends React.Component {
     }
 }
 
-const mapStateToProps = ({ questions, authedUser }) => {
+const mapStateToProps = ({ questions, authedUser, users }) => {
     return {
         authedUser,
+        users,
         questions : Object.keys(questions)
         .sort((a,b)=> questions[b].timestap - questions[a].timestap)
     }

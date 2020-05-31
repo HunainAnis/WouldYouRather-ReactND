@@ -35,7 +35,7 @@ class Login extends React.Component {
                     <Card>
                         <CardHeader><strong>Welcome to Would you Rather App!</strong></CardHeader>
                         <CardBody>
-                            <img className='auto' src={reactlogo} alt='react-redux logo' height='300' />
+                            <img style={{marginLeft:'auto', marginRight:'auto', width:'50%', display:'block'}} src={reactlogo} alt='react-redux logo' height='300' />
                             <h1>Sign in</h1>
                             <select style={{display:'block', width:'100%'}} onChange={(e)=>this.handleChange(e)} className='block'>
                                 <option value={null} >Select User</option>
