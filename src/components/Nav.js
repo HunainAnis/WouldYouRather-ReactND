@@ -12,7 +12,12 @@ function Nav() {
               </li>
               <li>
                 <NavLink to='/new' activeClassName='active'>
-                  New Tweet
+                  New Question
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to='/new' activeClassName='active'>
+                  Leader Board
                 </NavLink>
               </li>
             </ul>
