@@ -1,28 +1,29 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { Navbar, Nav, NavItem } from 'reactstrap'
 
-function Nav() {
+function NavBar() {
         return(
-            <nav className='nav'>
-            <ul>
-              <li>
-                <NavLink to='/' exact activeClassName='active'>
-                  Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to='/new' activeClassName='active'>
-                  New Question
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to='/new' activeClassName='active'>
-                  Leader Board
-                </NavLink>
-              </li>
-            </ul>
-          </nav>
+          <Navbar>
+            <Nav>
+              <NavItem>
+                <NavLink className='nav-link' to='/' exact activeClassName='active'>
+                   Home
+                </NavLink>                
+              </NavItem>
+              <NavItem color='light'>
+                <NavLink className='nav-link' to='/NewQuestion' exact activeClassName='active'>
+                   New Question
+                </NavLink>                
+              </NavItem>
+              <NavItem color='light'>
+                <NavLink className='nav-link' to='/Leaderboard' exact activeClassName='active'>
+                   Leader Board
+                </NavLink>                
+              </NavItem>
+            </Nav>
+          </Navbar>
         )
     }
 
-export default Nav
+export default NavBar

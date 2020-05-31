@@ -1,5 +1,5 @@
 import React from 'react';
-import Nav from './Nav';
+import NavBar from './Nav';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './Home';
 import { connect } from 'react-redux';
@@ -12,26 +12,25 @@ class App extends React.Component {
     const { dispatch } = this.props
 
     dispatch(handleInitialData())
-    console.log(this.props)
   }
   
   render() {
+    this.props.questions.length !== 0 && console.log(this.props)
+
   return (
-    <div className="App">
-        <LoadingBar />
-        <Router>
-          <Nav />
-          <Route path='/' exact component={Home} />
-        </Router>
-    </div>
+    <>   
+      <LoadingBar />
+      <div className="App">
+          <Router>
+            <NavBar />
+            <Route path='/' exact component={Home} />
+          </Router>
+      </div>
+    </>
   );
 }
 }
 
-function mapStateToProps( { questions }) {
-  return {
-      questions
-  }
-}
+const mapStateToProps = (state) => ({questions:state.questions})
 
 export default connect(mapStateToProps)(App);
