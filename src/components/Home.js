@@ -1,6 +1,8 @@
 import React from 'react'
 import { Container, Nav, NavItem, NavLink, TabContent, TabPane, Row, Col, Card, CardTitle, CardText, Button } from 'reactstrap'
 import classnames from 'classnames';
+import List from './List';
+import { connect } from 'react-redux';
 
 class Home extends React.Component {
     state={
@@ -14,6 +16,8 @@ class Home extends React.Component {
         })
     }
     render() {
+        const { questions } = this.props
+        console.log(questions)
         return(
             <div>
                 <Container>
@@ -39,7 +43,9 @@ class Home extends React.Component {
                         <TabPane tabId="1">
                         <Row>
                             <Col sm="12">
-                                <h4>Tab 1 Contents</h4>
+                                {questions.map(i=>(
+                                    <List key = {i} uid= {i} />
+                                ))}
                             </Col>
                         </Row>
                         </TabPane>
@@ -68,4 +74,11 @@ class Home extends React.Component {
     }
 }
 
-export default Home
+const mapStateToProps = ({ questions }) => {
+    return {
+        questions : Object.keys(questions)
+        .sort((a,b)=> questions[b].timestap - questions[a].timestap)
+    }
+}
+
+export default connect(mapStateToProps)(Home)
