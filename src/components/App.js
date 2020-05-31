@@ -3,14 +3,15 @@ import Nav from './Nav';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Home from './Home';
 import { connect } from 'react-redux';
-import { _getUsers } from '../utils/_DATA';
+import { handleInitialData } from '../actions/shared';
 
 class App extends React.Component {
 
   componentDidMount() {
+    const { dispatch } = this.props
+
+    dispatch(handleInitialData())
     console.log(this.props)
-    _getUsers()
-    .then(users=>console.log(users))
   }
   
   render() {
@@ -25,4 +26,8 @@ class App extends React.Component {
 }
 }
 
-export default connect()(App);
+function mapStateToProps({ users }) {
+  return users
+}
+
+export default connect(mapStateToProps)(App);
