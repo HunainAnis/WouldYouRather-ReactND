@@ -7,6 +7,7 @@ import { handleInitialData } from '../actions/shared';
 import LoadingBar from 'react-redux-loading'
 import QuestionDetail from './Question';
 import Login from './Login';
+import CreateQuestion from './NewQuestion';
 
 class App extends React.Component {
 
@@ -28,6 +29,7 @@ class App extends React.Component {
             <Route path='/' exact component={Home} />
             <Route path='/Questions/:id' component={QuestionDetail} />
             <Route path='/Login' component={Login} />
+            <Route path='/NewQuestion' component={CreateQuestion} />
           </Router>
       </div>
     </>

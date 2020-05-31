@@ -33,7 +33,10 @@ class Login extends React.Component {
             <div>
                 <Container>
                     <Card>
-                        <CardHeader><strong>Welcome to Would you Rather App!</strong></CardHeader>
+                        <CardHeader style={{textAlign: 'center'}}>
+                            <strong>Welcome to Would you Rather App!</strong>
+                            <h6 style={{textAlign: 'center'}}>Please sign-in to continue</h6>
+                        </CardHeader>
                         <CardBody>
                             <img style={{marginLeft:'auto', marginRight:'auto', width:'50%', display:'block'}} src={reactlogo} alt='react-redux logo' height='300' />
                             <h1>Sign in</h1>
