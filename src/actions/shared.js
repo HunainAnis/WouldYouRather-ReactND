@@ -1,5 +1,6 @@
 import { _getUsers, _getQuestions } from "../utils/_DATA"
 import { receiveUsers } from "./users"
+import { receiveQuestions } from './questions'
 
 function getInitialData () {
     return Promise.all([
@@ -16,6 +17,7 @@ export function handleInitialData() {
         return getInitialData()
             .then(({users, questions})=>{
                 dispatch(receiveUsers(users))
+                dispatch(receiveQuestions(questions))
             })
     }
 }
