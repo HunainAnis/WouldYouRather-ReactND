@@ -1,8 +1,19 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { Navbar, Nav, NavItem } from 'reactstrap'
+import { Navbar, Nav, NavItem, Button } from 'reactstrap'
+import { connect } from 'react-redux'
+import { setAuthedUser } from '../actions/authedUser'
 
-function NavBar() {
+class NavBar extends React.Component {
+
+  logout() {
+    return(
+      this.props.dispatch(setAuthedUser(null))
+    )
+  }
+
+  render() {
+    const { authedUser } = this.props
         return(
           <Navbar>
             <Nav>
@@ -16,14 +27,26 @@ function NavBar() {
                    New Question
                 </NavLink>                
               </NavItem>
-              <NavItem color='light'>
+              <NavItem className='mr-auto' color='light'>
                 <NavLink className='nav-link' to='/Leaderboard' exact activeClassName='active'>
                    Leader Board
                 </NavLink>                
               </NavItem>
+            {authedUser !== null && 
+            <div>Hello, {authedUser}
+            <Button onClick={()=>this.logout()}>Logout</Button>
+            </div>
+            }
             </Nav>
           </Navbar>
         )
     }
+  }
 
-export default NavBar
+function mapStateToProps({ authedUser }) {
+  return {
+    authedUser
+  }
+}
+
+export default connect(mapStateToProps)(NavBar)

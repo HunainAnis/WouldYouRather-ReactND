@@ -3,6 +3,8 @@ import { Container, Nav, NavItem, NavLink, TabContent, TabPane, Row, Col, Card, 
 import classnames from 'classnames';
 import List from './List';
 import { connect } from 'react-redux';
+import QuestionDetail from './Question';
+import { Redirect } from 'react-router-dom';
 
 class Home extends React.Component {
     state={
@@ -16,8 +18,11 @@ class Home extends React.Component {
         })
     }
     render() {
-        const { questions } = this.props
+        const { questions, authedUser } = this.props
         console.log(questions)
+        if(authedUser === null) {
+            return <Redirect to='/Login' />
+        }
         return(
             <div>
                 <Container>
@@ -50,22 +55,6 @@ class Home extends React.Component {
                         </Row>
                         </TabPane>
                         <TabPane tabId="2">
-                        <Row>
-                            <Col sm="6">
-                            <Card body>
-                                <CardTitle>Special Title Treatment</CardTitle>
-                                <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                                <Button>Go somewhere</Button>
-                            </Card>
-                            </Col>
-                            <Col sm="6">
-                            <Card body>
-                                <CardTitle>Special Title Treatment</CardTitle>
-                                <CardText>With supporting text below as a natural lead-in to additional content.</CardText>
-                                <Button>Go somewhere</Button>
-                            </Card>
-                            </Col>
-                        </Row>
                         </TabPane>
                     </TabContent>
                 </Container>
@@ -74,8 +63,9 @@ class Home extends React.Component {
     }
 }
 
-const mapStateToProps = ({ questions }) => {
+const mapStateToProps = ({ questions, authedUser }) => {
     return {
+        authedUser,
         questions : Object.keys(questions)
         .sort((a,b)=> questions[b].timestap - questions[a].timestap)
     }

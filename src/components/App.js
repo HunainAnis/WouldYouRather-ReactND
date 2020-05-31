@@ -5,6 +5,8 @@ import Home from './Home';
 import { connect } from 'react-redux';
 import { handleInitialData } from '../actions/shared';
 import LoadingBar from 'react-redux-loading'
+import QuestionDetail from './Question';
+import Login from './Login';
 
 class App extends React.Component {
 
@@ -24,6 +26,8 @@ class App extends React.Component {
           <Router>
             <NavBar />
             <Route path='/' exact component={Home} />
+            <Route path='/Questions/:id' component={QuestionDetail} />
+            <Route path='/Login' component={Login} />
           </Router>
       </div>
     </>
