@@ -48,15 +48,13 @@ class Leaderboard extends React.Component {
             userAnswers: Object.keys(users[user].answers).length,
             avatarUrl:users[user].avatarURL
         }))
-
-        console.log(userArray)
         return(
             <div>
                 <Container>
                     {
                         userArray.map(i=>(
                             <Leaders
-                                key={i.users}
+                                key={i.userId}
                                 id={i.userId}
                                 answers={i.userAnswers} 
                                 questions={i.userQuestions} 

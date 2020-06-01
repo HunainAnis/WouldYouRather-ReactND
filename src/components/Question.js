@@ -12,7 +12,6 @@ class QuestionDetail extends React.Component {
             return <Redirect to='/' />
         }
         const checker = users[authedUser].answers[id] !== undefined
-        console.log(users[authedUser].answers)
         return(
             <div>
                 <Container>
