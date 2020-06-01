@@ -1,41 +1,61 @@
 import React from 'react'
-import { Card, CardHeader, CardBody, Row, Col, CardTitle, CardText, Button, Label, Input } from 'reactstrap'
+import { CardTitle, Button, Label, Input } from 'reactstrap'
 import { connect } from 'react-redux'
+import { handleSaveAnswer } from '../actions/questions'
 
 class UnAnswered extends React.Component {
+
+    state={
+        answer:null
+    }
+
+    handleChange(e) {
+        this.setState({
+            [e.target.name]:e.target.value
+        })
+    }
+    handleSubmit() {
+        const { dispatch, authedUser, uid } = this.props
+        const { answer } = this.state
+        return(
+            dispatch(handleSaveAnswer( authedUser, uid, answer ))
+
+        )
+    }
+
     render() {
-        const { uid, questions, users, authedUser } = this.props
+        const { uid, questions } = this.props
         return(
             <div>
-                <Card>
-                    <CardHeader> <strong>{questions[uid].author}</strong> asks:</CardHeader>
-                    <CardBody>
-                        <Row>
-                            <Col xs='4'>
-                                <img  width="100%" src={users[questions[uid].author].avatarURL} alt='ss' />                           
-                            </Col>
-                            <Col style={{borderLeft:'2'}}>
-                                <CardTitle className='bold'><strong>Would you Rather</strong></CardTitle>
-                                <Label>
-                                    <Input type='radio' name='answer' /> {questions[uid].optionOne.text}
-                                </Label>
-                                <hr />
-                                <Label>
-                                    <Input type='radio' name='answer' /> {questions[uid].optionTwo.text}
-                                </Label>
-                                    <Button color='success' block>Submit</Button> 
-                            </Col>
-                        </Row>
-                    </CardBody>
-                </Card>
+                <CardTitle className='bold'><strong>Would you Rather...</strong></CardTitle>
+                <div>
+                    <Label>
+                        <Input 
+                            type='radio' 
+                            value='optionOne' 
+                            checked={this.state.answer === 'optionOne'} 
+                            name='answer'
+                            onChange={(e)=>this.handleChange(e)}
+                            /> {questions[uid].optionOne.text}
+                    </Label>
+                </div>
+                <Label>
+                    <Input 
+                        type='radio' 
+                        value='optionTwo' 
+                        checked={this.state.answer === 'optionTwo'} 
+                        name='answer'
+                        onChange={(e)=>this.handleChange(e)}
+                        /> {questions[uid].optionTwo.text}
+                </Label>
+                <Button onClick={() => this.handleSubmit() } color='success' block>Submit</Button> 
             </div>
         )
     }
 }
 
-function mapStateToProps({ users, authedUser, questions }, {uid}) {
+function mapStateToProps({ authedUser, questions }, {uid}) {
     return {
-        users,
         authedUser,
         questions,
         uid

@@ -51,7 +51,7 @@ class CreateQuestion extends React.Component {
                                             block
                                             disabled={this.state.optionOne === '' && this.state.optionTwo === ''}
                                         >
-                                            View Poll</Button>
+                                            Submit Question</Button>
                                     </Form>
                                 </Col>
                             </Row>

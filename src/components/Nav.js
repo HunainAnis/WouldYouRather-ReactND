@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { Navbar, Nav, NavItem, Button } from 'reactstrap'
+import { Navbar, Nav, NavItem, Button, NavbarText } from 'reactstrap'
 import { connect } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser'
 
@@ -14,7 +14,6 @@ class NavBar extends React.Component {
 
   render() {
     const { authedUser, users } = this.props
-    console.log(authedUser !== null && users && users.authedUser)
         return(
           <Navbar>
             <Nav>
@@ -34,13 +33,16 @@ class NavBar extends React.Component {
                 </NavLink>                
               </NavItem>
               <NavItem className='mr-auto' color='light'>              
-                {authedUser !== null && 
-                <span>Hello, <img width='5%' src={users&&users[authedUser].avatarURL} alt={authedUser + "'s Avatar"} /> {authedUser}
-                <Button onClick={()=>this.logout()}>Logout</Button>
-                </span>
-                }
               </NavItem>
+
             </Nav>
+            <NavbarText>
+                {authedUser !== null &&
+                  <span>Hello, <img width='5%' src={users&&users[authedUser].avatarURL} alt={authedUser + "'s Avatar"} /><strong>{users[authedUser].name}</strong>
+                  <Button size='sm' color='danger' onClick={()=>this.logout()}>Logout</Button>
+                  </span>
+                }              
+            </NavbarText>
           </Navbar>
         )
     }
