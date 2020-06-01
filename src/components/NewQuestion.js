@@ -22,6 +22,7 @@ class CreateQuestion extends React.Component {
         dispatch(handleSaveQuestion(optionOne, optionTwo, authedUser))
         console.log(optionOne, optionTwo, authedUser)
         this.setState({optionOne:'', optionTwo:''})
+        this.props.history.push('/')
     }
 
     render() {

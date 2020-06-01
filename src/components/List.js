@@ -5,9 +5,7 @@ import { Link } from 'react-router-dom'
 
 class List extends React.Component { 
     render() {
-
-        const { uid, questions } = this.props
-        console.log(uid)
+        const { uid, questions, users } = this.props
         return(
                 <div>
                     <Card>
@@ -15,7 +13,7 @@ class List extends React.Component {
                         <CardBody>
                             <Row>
                                 <Col xs='4'>
-                                    <img  width="100%" src="/assets/318x180.svg" alt='ss' />                           
+                                    <img  width="100%" src={users[questions[uid].author].avatarURL} alt='ss' />                           
                                 </Col>
                                 <Col>
                                     <CardTitle className='bold'><strong>Would you Rather</strong></CardTitle>
