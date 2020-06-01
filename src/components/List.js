@@ -15,7 +15,7 @@ class List extends React.Component {
                                 <Col xs='4'>
                                     <img  width="100%" src={users[questions[uid].author].avatarURL} alt='ss' />                           
                                 </Col>
-                                <Col>
+                                <Col style={{borderLeft:'2'}}>
                                     <CardTitle className='bold'><strong>Would you Rather</strong></CardTitle>
                                     <CardText>{questions[uid].optionOne.text}</CardText>
                                     <Link to={`Questions/${uid}`}>

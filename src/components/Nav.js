@@ -13,7 +13,8 @@ class NavBar extends React.Component {
   }
 
   render() {
-    const { authedUser } = this.props
+    const { authedUser, users } = this.props
+    console.log(authedUser !== null && users && users.authedUser)
         return(
           <Navbar>
             <Nav>
@@ -32,20 +33,23 @@ class NavBar extends React.Component {
                    Leader Board
                 </NavLink>                
               </NavItem>
-            {authedUser !== null && 
-            <div>Hello, {authedUser}
-            <Button onClick={()=>this.logout()}>Logout</Button>
-            </div>
-            }
+              <NavItem className='mr-auto' color='light'>              
+                {authedUser !== null && 
+                <span>Hello, <img width='5%' src={users&&users[authedUser].avatarURL} alt={authedUser + "'s Avatar"} /> {authedUser}
+                <Button onClick={()=>this.logout()}>Logout</Button>
+                </span>
+                }
+              </NavItem>
             </Nav>
           </Navbar>
         )
     }
   }
 
-function mapStateToProps({ authedUser }) {
+function mapStateToProps({ authedUser, users }) {
   return {
-    authedUser
+    authedUser,
+    users
   }
 }
 
