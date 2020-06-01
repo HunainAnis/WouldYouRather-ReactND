@@ -17,12 +17,12 @@ export function receiveQuestions(questions) {
         }
     }
 
-export function handleSaveQuestion(optionOne, optionTwo, author) {
+export function handleSaveQuestion(optionOneText, optionTwoText, author) {
     return(dispatch) => {
         const question = {
-            optionOne, optionTwo, author
+            optionOneText, optionTwoText, author
         }
-        _saveQuestion({optionOne, optionTwo, author})
+        _saveQuestion(question)
         .then(data=>(
             dispatch(saveQuestion(data))
         ))

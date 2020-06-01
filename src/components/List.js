@@ -18,7 +18,7 @@ class List extends React.Component {
                                     <img  width="100%" src="/assets/318x180.svg" alt='ss' />                           
                                 </Col>
                                 <Col>
-                                    <CardTitle className='bold'>Would you Rather</CardTitle>
+                                    <CardTitle className='bold'><strong>Would you Rather</strong></CardTitle>
                                     <CardText>{questions[uid].optionOne.text}</CardText>
                                     <Link to={`Questions/${uid}`}>
                                         <Button color='success' block>View Poll</Button> 

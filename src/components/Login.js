@@ -25,7 +25,6 @@ class Login extends React.Component {
     
 
     render() {
-        console.log(this.props.dispatch)
         if(this.state.toHome === true) {
             return <Redirect to='/' />
         }
@@ -38,7 +37,7 @@ class Login extends React.Component {
                             <h6 style={{textAlign: 'center'}}>Please sign-in to continue</h6>
                         </CardHeader>
                         <CardBody>
-                            <img style={{marginLeft:'auto', marginRight:'auto', width:'50%', display:'block'}} src={reactlogo} alt='react-redux logo' height='300' />
+                            <img style={{marginLeft:'auto', marginRight:'auto', display:'block'}} src={reactlogo} alt='react-redux logo' height='300' />
                             <h1>Sign in</h1>
                             <select style={{display:'block', width:'100%'}} onChange={(e)=>this.handleChange(e)} className='block'>
                                 <option value={null} >Select User</option>

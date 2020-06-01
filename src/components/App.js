@@ -18,23 +18,21 @@ class App extends React.Component {
   }
   
   render() {
-    this.props.questions.length !== 0 && console.log(this.props)
-
-  return (
-    <>   
-      <LoadingBar />
-      <div className="App">
-          <Router>
-            <NavBar />
-            <Route path='/' exact component={Home} />
-            <Route path='/Questions/:id' component={QuestionDetail} />
-            <Route path='/Login' component={Login} />
-            <Route path='/NewQuestion' component={CreateQuestion} />
-          </Router>
-      </div>
-    </>
-  );
-}
+    return (
+      <>   
+        <LoadingBar />
+        <div className="App">
+            <Router>
+              <NavBar />
+              <Route path='/' exact component={Home} />
+              <Route path='/Questions/:id' component={QuestionDetail} />
+              <Route path='/Login' component={Login} />
+              <Route path='/NewQuestion' component={CreateQuestion} />
+            </Router>
+        </div>
+      </>
+    );
+  }
 }
 
 const mapStateToProps = (state) => ({questions:state.questions})
