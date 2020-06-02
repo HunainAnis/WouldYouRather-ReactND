@@ -14,7 +14,6 @@ class Result extends React.Component {
         const answerTwo = questions[id].optionTwo.votes.length
         const progressOfOne =  answerOne === '0' ? '0' : (answerOne / TotalLength) * 100
         const progressOfTwo =  100 - progressOfOne
-        console.log(progressOfOne, progressOfTwo)
         return(
             <div>
                 <Container>
