@@ -23,12 +23,12 @@ class NavBar extends React.Component {
                 </NavLink>                
               </NavItem>
               <NavItem color='light'>
-                <NavLink className='nav-link' to='/NewQuestion' exact activeClassName='active'>
+                <NavLink className='nav-link' to='/add' exact activeClassName='active'>
                    New Question
                 </NavLink>                
               </NavItem>
               <NavItem className='mr-auto' color='light'>
-                <NavLink className='nav-link' to='/Leaderboard' exact activeClassName='active'>
+                <NavLink className='nav-link' to='/leaderboard' exact activeClassName='active'>
                    Leader Board
                 </NavLink>                
               </NavItem>

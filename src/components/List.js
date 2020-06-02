@@ -18,7 +18,7 @@ class List extends React.Component {
                                 <Col style={{borderLeft:'2'}}>
                                     <CardTitle className='bold'><strong>Would you Rather</strong></CardTitle>
                                     <CardText>{questions[uid].optionOne.text}</CardText>
-                                    <Link to={`Questions/${uid}`}>
+                                    <Link to={`question/${uid}`}>
                                         <Button color='success' block>View Poll</Button> 
                                     </Link>
                                 </Col>

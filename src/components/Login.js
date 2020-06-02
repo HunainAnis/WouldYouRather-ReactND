@@ -21,6 +21,7 @@ class Login extends React.Component {
         // const { authedUser } = this.state
         this.props.dispatch(setAuthedUser(this.state.authedUser))
         this.setState({toHome:true})
+        
     }
     
 

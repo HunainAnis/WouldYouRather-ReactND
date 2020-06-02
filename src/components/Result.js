@@ -13,7 +13,8 @@ class Result extends React.Component {
         const answerOne = questions[id].optionOne.votes.length
         const answerTwo = questions[id].optionTwo.votes.length
         const progressOfOne =  answerOne === '0' ? '0' : (answerOne / TotalLength) * 100
-        const progressOfTwo =  answerTwo === '0' ? '0' : (answerTwo / TotalLength) * 100
+        const progressOfTwo =  100 - progressOfOne
+        console.log(progressOfOne, progressOfTwo)
         return(
             <div>
                 <Container>
@@ -27,7 +28,7 @@ class Result extends React.Component {
                     <Card>
                         <CardBody>
                             <h5>Would you Rather  {questions[id].optionTwo.text}{optionTwo.votes.includes(authedUser) && <Badge color='warning'>Your Vote</Badge>}</h5>
-                            <Progress value={progressOfTwo}>{progressOfOne}%</Progress>
+                            <Progress value={progressOfTwo}>{progressOfTwo}%</Progress>
                             <p><strong>{answerTwo + ' out of ' + TotalLength} Votes</strong></p>
                         </CardBody>
                     </Card>

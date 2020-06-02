@@ -49,7 +49,7 @@ class CreateQuestion extends React.Component {
                                             onClick={()=>this.handleSubmit()}
                                             color='success' 
                                             block
-                                            disabled={this.state.optionOne === '' && this.state.optionTwo === ''}
+                                            disabled={this.state.optionOne !== '' && this.state.optionTwo !== '' ? false : true}
                                         >
                                             Submit Question</Button>
                                     </Form>
