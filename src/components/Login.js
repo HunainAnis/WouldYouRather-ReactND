@@ -31,8 +31,6 @@ class Login extends React.Component {
             if(this.state.toHome === true) {
                 return <Redirect to= {from} />
             }
-
-        console.log( this.props.loaction && this.props.location.state )
         return(
             <div>
                 <Container>

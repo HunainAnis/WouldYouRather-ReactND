@@ -11,6 +11,10 @@ class QuestionDetail extends React.Component {
         if(authedUser=== null) {
             return <Redirect to='/' />
         }
+        if(!Object.keys(questions).includes(this.props.match.params.id)) {
+            return <Redirect to='/404' />
+        }
+        console.log(this.props)
         const checker = users[authedUser].answers[id] !== undefined
         return(
             <div>

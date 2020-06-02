@@ -49,6 +49,7 @@ class App extends React.Component {
                 <ProtectedRoute path='/question/:id' component={QuestionDetail} />
                 <ProtectedRoute path='/leaderboard' component={Leaderboard} />
                 <ProtectedRoute path='/add' component={CreateQuestion} />
+                <ProtectedRoute path='/404' component={NoMatchPage} />
                 <ProtectedRoute component={NoMatchPage} />
               </Switch>
             </Router>
