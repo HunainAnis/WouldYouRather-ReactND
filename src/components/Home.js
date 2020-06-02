@@ -17,11 +17,11 @@ class Home extends React.Component {
         })
     }
     render() {
-        const { questions, authedUser, users } = this.props
+        const { question, questions, authedUser, users } = this.props
         if(authedUser === null) {
             return <Redirect to='/Login' />
         }
-        const answered = Object.keys(users[authedUser].answers)
+        const answered = Object.keys(users[authedUser].answers).sort((a,b) => question[a].timestamp - question[b].timestamp)
         const unanswered = questions.filter(i=>!answered.includes(i))
         return(
             <div>
@@ -75,7 +75,8 @@ const mapStateToProps = ({ questions, authedUser, users }) => {
         authedUser,
         users,
         questions : Object.keys(questions)
-        .sort((a,b)=> questions[b].timestamp - questions[a].timestamp)
+        .sort((a,b)=> questions[b].timestamp - questions[a].timestamp),
+        question : questions
     }
 }
 

@@ -48,7 +48,13 @@ class UnAnswered extends React.Component {
                         onChange={(e)=>this.handleChange(e)}
                         /> {questions[uid].optionTwo.text}
                 </Label>
-                <Button onClick={() => this.handleSubmit() } color='success' block>Submit</Button> 
+                <Button 
+                    onClick={() => this.handleSubmit() } 
+                    color='success' 
+                    block
+                    disabled={this.state.answer === null}
+                >
+                    Submit</Button> 
             </div>
         )
     }

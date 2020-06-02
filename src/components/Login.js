@@ -26,9 +26,13 @@ class Login extends React.Component {
     
 
     render() {
-        if(this.state.toHome === true) {
-            return <Redirect to='/' />
-        }
+        
+        const { from } = this.props.location.state || { from : { pathname : '/'}}
+            if(this.state.toHome === true) {
+                return <Redirect to= {from} />
+            }
+
+        console.log( this.props.loaction && this.props.location.state )
         return(
             <div>
                 <Container>
