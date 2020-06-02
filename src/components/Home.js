@@ -21,7 +21,7 @@ class Home extends React.Component {
         if(authedUser === null) {
             return <Redirect to='/Login' />
         }
-        const answered = Object.keys(users[authedUser].answers).sort((a,b) => question[a].timestamp - question[b].timestamp)
+        const answered = Object.keys(users[authedUser].answers).reverse()
         const unanswered = questions.filter(i=>!answered.includes(i))
         return(
             <div>
